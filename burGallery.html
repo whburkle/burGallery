@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Document -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- SEO -->
+	<meta name="robots" content="all, index, follow, noodp, noydir, noarchive">
+
+	<!-- Description -->
+	<meta name="description" content="A simple yet powerful, fully customizable, modern image gallery developed using javascript and css.">
+
+	<!-- Title -->
+	<title>burGallery. A modern JavaScipt/CSS image gallery.</title>
+
+	<!-- Base URL -->
+	<base href="">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="img/ui/favicon.ico">
+
+	<!-- CSS: burGallery -->
+	<link rel="stylesheet" type="text/css" href="css/burGallery_min.css">
+
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+	<!-- JavaScript: burGallery -->
+	<script src="js/burGallery_min.js"></script>
+
+	<script>
+		/* Use custom events if there's a need to run any code after the gallery class has ran and built your gallery
+		--------------------------------- */
+		custom_event = () => {
+			document.querySelector(".menu_close").addEventListener("click", () => {
+				if (document.querySelector(".menu").classList.contains("active")) {
+					document.querySelector(".menu_close").innerHTML = "&#xf107;";
+					document.querySelector(".menu").classList.remove("active");
+				}
+				else {
+					document.querySelector(".menu_close").innerHTML = "&#xf106;";
+					document.querySelector(".menu").classList.add("active");
+				}
+			});
+		}
+	</script>
+</head>
+
+<body>
+	<noscript><div><h3>This website uses JavaScript.</h3><p>Your browser has JavaScript disabled or does not support it, so some content or features may not be functional or available to you at this time.</p></div></noscript>
+
+	<!-- Site Name -->
+	<h1>burGallery</h1>
+	<p>A modern JavaScipt/CSS image gallery.</p>
+
+
+
+	<!-- Sample Gallery div with the name "portfolio" -->
+	<div class="portfolio">
+
+
+	
+		<!-- Gallery Title -->
+		<h2>Portfolio (demo gallery)</h2>
+
+		<!-- Gallery thumbnails/icons -->
+		<div class="grid"></div>
+
+			<!-- Preload thumbnail/icon active state (optional) -->
+			<!-- <div class="grid_thb_hvr_preload_img"></div> -->
+
+		<!-- Gallery modal -->
+		<div class="modal">
+
+
+
+			<!-- Slideshow Progress bar -->
+			<div class="progress">
+				<div class="progress_bar"><span>1%</span></div>
+			</div>
+
+
+
+			<!-- Modal content -->
+			<div class="modal_content">
+
+
+
+				<!-- Slideshow/Album Title -->
+				<div class="title">Gallery Title - Album Name</div>
+
+				<!-- Slideshow Main -->
+			    <div class="slideshow">
+
+
+				    <div class="menu">
+				    	<div class="menu_bg">
+							<div class="options"> <!-- Image options -->
+								<button class="pause_btn fas">&#xf04b;</button> <!-- Auto Play/Pause -->
+								<button class="caption_btn fas">&#xf05a;</button> <!-- Toggle caption -->
+								<button class="appearance_btn fas">&#xf5c0;</button> <!-- Toggle appearance mode -->
+								<button class="fwindow_btn fas">&#xf424;</button> <!-- Toggle full window -->
+								<span class="counter">0/0</span> <!-- Counter -->
+								<button class="fscreen_btn fas">&#xf065;</button> <!-- Toggle full screen -->
+								<button class="download_btn fas">&#xf019;</button> <!-- Download image -->
+								<div class="album_navigation"><button class="dropdown_btn fas">&#xf805;</button></div> <!-- Album navigation // Narrow div down to single class/classname, probably just album_navigation --> 
+								<button class="close_btn fas">&#xf00a;</button> <!-- Gallery (and album) close -->
+							</div>
+							
+							<hr>
+
+						    <div class="pagination"> <!-- Gallery pagination first, last, next, previous, scroll -->
+						    	<button class="first_btn fas">&#xf100;</button>
+						    	<button class="previous_btn fas">&#xf104;</button>
+								<div class="scroll"></div>
+								<button class="next_btn fas">&#xf105;</button>
+								<button class="last_btn fas">&#xf101;</button>
+						    </div>
+					    </div>
+
+					    <div class="menu_close fas">&#xf107;</div>
+					</div>
+
+					<div class="images"></div> <!-- Gallery images -->
+
+					<p class="caption">Caption</p> <!-- Image caption -->
+			    
+			    </div>
+			
+
+
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Sample Gallery: /div: Portfolio -->
+
+
+
+	<!-- Gallery optional user settings -->
+	<script>
+		const portfolio_options = {
+			appearance_mode: true, // Light/dark mode (true/false, dark/light)
+			caption: false, // Auto show/hide caption (true/false)
+			custom_event: true, // Callback function custom_event(), to trigger after gallery fully loads (true/false)
+			display: false, // Auto-display (true/false)
+			loop: true, // When slideshow reaches last image, loop back to beginning. (true/false)
+			play: false, // Auto-play (true/false)
+			slideshow_speed: 2000, // Delay time between slides. Milliseconds: 1000 = 1 second
+			template: {
+				// Create a custom container for your images. The closing tag(s) go in their own object "images_wrapper_close", see below. The default is one div closing tag, so if you do not include a closing tag here, that's what it will default to, which may or may not be what you need: If your custom "images_wrapper_open" requires something different or more than just a single closing div (</div>) tag, don't forget to include a proper "images_wrapper_close" object below!
+				// "images_wrapper_open" returns just about any value for use in your custom markup except for current image. Or leave blank, as it is here, if no values are used.
+				images_wrapper_open: (element, album_num, album_title, image_folder, total_images) => {
+					return "<div class='bb-container'>" +
+								"<div class='bb-content bb-display-container bb-card'>";
+				},
+
+				// Build index of images/slides for each respective album
+				// "images_wrapper_content" returns just about any value for use in your custom markup, including current image
+				images_wrapper_content: (i, element, album_num, album_title, image_folder, image_file, total_images) => {
+					return `<img class='img' data-src='${ image_folder + image_file }' src=''>`;
+				},
+
+				// Include necessary closing tag(s).
+				images_wrapper_close: "</div>" + 
+								"</div>",
+
+
+
+				/* --- */
+
+
+
+				// Create a custom container for your thumbnails. The closing tag(s) go in their own object "grid_wrapper_close", see below. The default is one div closing tag, so if you do not include a closing tag here, that's what it will default to, which may or may not be what you need: If your custom "grid_wrapper_close" requires something different or more than just a single closing div (</div>) tag, don't forget to include a proper "grid_wrapper_close" object below!
+				// "grid_wrapper_open" returns just about any value for use in your custom markup except for current image.
+				grid_wrapper_open: (element, album_num, album_title, image_folder, total_images) => {
+					return `<div class='bb-row'>` +
+			    				"<div class='bb-col'>" +
+			    					`<h3>${ album_title }</h3>` +
+			    				"</div>" +
+			    				"<div class='bb-rest'>";
+				},
+
+				// Build a thumbnail to be used for each image in respective album(s)
+				// "grid_wrapper_content" returns just about any value for use in your custom markup, including current image
+				grid_wrapper_content: (t, element, album_num, album_title, image_folder, image_file, total_images) => {
+					return `<button type='button' class='thb i_${ t }'>${ t }</button>`;
+				},
+
+				// Include necessary closing tag(s).
+				grid_wrapper_close: "</div>" + 
+								"</div>",
+
+
+
+				/* --- */
+
+
+
+				// Build a thumbnail to be used for each image in respective album(s)
+				// "scroll" returns just about any value for use in your custom markup, including current image
+				scroll: (t, element, album_num, album_title, image_folder, image_file, total_images) => {
+					return `<button type='button' class='test thb i_${ t }'>${ t }</button>`;
+				},
+
+
+
+				/* --- */
+
+
+
+				// Build a link for each album. To be used in album navigation menu.
+				// "album_navigation_menu" returns album_num and album_title for use in your custom markup
+				album_navigation_menu: (album_num, album_title) => {
+					return `<button class='n_${ album_num }'>${ album_title }</button>`;
+				}
+
+			}
+		};
+
+		const portfolio = new Gallery("portfolio", "js/summer_database_min.json", portfolio_options);
+
+	</script>
+</body>
+</html>

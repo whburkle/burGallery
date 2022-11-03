@@ -1,0 +1,213 @@
+[
+  [
+    {
+      "album": 1,
+      "title": "Destination A",
+      "img_folder": "img/travel/destination_a/"
+    },
+    {
+      "img": "Amazing-Beach-Summer-Photos-768x489.jpg",
+      "caption": "This is a demo gallery."
+    },
+    {
+      "img": "beach-original-summer-sea.jpg",
+      "caption": "With a demo album."
+    },
+    {
+      "img": "Beach-summer-backgrounds-free-download.jpg",
+      "caption": "With \"free high resolution images\" downloaded after a random internet search."
+    },
+    {
+      "img": "Beach-summer-backgrounds-pictures-desktop.jpg",
+      "caption": "This gallery is also free."
+    },
+    {
+      "img": "Beach-summer-backgrounds.jpg",
+      "caption": "Easy to use."
+    },
+    {
+      "img": "Beautiful-Nature-Sunset-Summer-Wallpaper.jpg",
+      "caption": "Highly customizable html markup."
+    },
+    {
+      "img": "beautiful-summer-desktop-620x342.jpg",
+      "caption": "Accessible."
+    },
+    {
+      "img": "Desktop-download-summer-wallpapers-HQ.jpg",
+      "caption": "Fully cross-compatible."
+    },
+    {
+      "img": "Forest-Falls-Summer-Wallpaper.jpg",
+      "caption": "Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup. Highly customizable css markup."
+    },
+    {
+      "img": "Free-download-beach-summer-backgrounds.jpg",
+      "caption": "Lazy loading images."
+    },
+    {
+      "img": "Free-summer-backgrounds-hd-wallpapers-768x480.jpg",
+      "caption": "Defaults to a minimalist html and css markup when custom markup is not declared. Defaults to a minimalist html and css markup when custom markup is not declared. Defaults to a minimalist html and css markup when custom markup is not declared. Defaults to a minimalist html and css markup when custom markup is not declared. Defaults to a minimalist html and css markup when custom markup is not declared."
+    },
+    {
+      "img": "Free-Summer-Picture.jpg",
+      "caption": "Slideshow."
+    },
+    {
+      "img": "Free-Summer-Wallpaper-For-You-768x480.jpg",
+      "caption": "Pagination."
+    },
+    {
+      "img": "Free-summer-wallpaper-HD-backgrounds-download-768x480.jpg",
+      "caption": "Auto-Play."
+    },
+    {
+      "img": "Free-Summer-Wallpapers-Download.jpg",
+      "caption": "Auto-Display."
+    },
+    {
+      "img": "Wonderfull-Summer-HD-Picture.jpg",
+      "caption": "Loop, etc."
+    }
+  ],
+
+
+
+  [
+    {
+      "album": 2,
+      "title": "Destination B",
+      "img_folder": "img/travel/destination_b/"
+    },
+    {
+      "img": "Free-Summer-Wallpapers-For-Desktop.jpg",
+      "caption": "This is a demo gallery."
+    },
+    {
+      "img": "Free-Summer-Wallpapers.jpg",
+      "caption": "With a demo album."
+    },
+    {
+      "img": "Funny-Summer-Wallpaper-in-Beach-768x480.jpg",
+      "caption": "With \"free high resolution images\" downloaded after a random internet search."
+    },
+    {
+      "img": "hd-summer-beach-wallpapers.jpg",
+      "caption": "This gallery is also free."
+    },
+    {
+      "img": "HD-Summer-Desktop-Wallpaper.jpg",
+      "caption": "Easy to use."
+    },
+    {
+      "img": "Hot-Summer-Wallpaper-Computer-Picture-Desktop-Image.jpg",
+      "caption": "Highly customizable html markup."
+    },
+    {
+      "img": "Images-pictures-summer-wallpapers-high-quality-768x471.jpg",
+      "caption": "Accessible."
+    },
+    {
+      "img": "Imgaes-download-beach-summer-backgrounds.jpg",
+      "caption": "Fully cross-compatible."
+    },
+    {
+      "img": "Mac-Summer-Beach-Wallpaper-Whitehaven-Beach-Australia.jpg",
+      "caption": "Highly customizable css markup."
+    },
+    {
+      "img": "Paradise-Beach-Summer-Wallpaper.jpg",
+      "caption": "Lazy loading images."
+    },
+    {
+      "img": "Photos-beach-summer-backgrounds.jpg",
+      "caption": "Defaults to a minimalist html and css markup when custom markup is not declared."
+    },
+    {
+      "img": "Photos-download-summer-wallpapers-high-quality.jpg",
+      "caption": "Slideshow."
+    },
+    {
+      "img": "Pictures-summer-wallpapers-high-quality.jpg",
+      "caption": "Pagination."
+    },
+    {
+      "img": "summer-beach-hd-background.jpg",
+      "caption": "Auto-Play."
+    },
+    {
+      "img": "summer-beach-paradise-wallpaper-hd-1080p.jpg",
+      "caption": "Auto-Display, etc."
+    }
+  ],
+
+
+  
+  [
+    {
+      "album": 3,
+      "title": "Destination C",
+      "img_folder": "img/travel/destination_c/"
+    },
+    {
+      "img": "summer-beach-paradise-wallpaper-hd-cool.jpg",
+      "caption": "This is a demo gallery."
+    },
+    {
+      "img": "summer-beach-paradise-wallpaper-hd-desktop.jpg",
+      "caption": "With a demo album."
+    },
+    {
+      "img": "summer-beach-umbrella-hd-wallpapers.jpeg",
+      "caption": "With \"free high resolution images\" downloaded after a random internet search."
+    },
+    {
+      "img": "Summer-HD-Backgrounds-Free-Download.jpg",
+      "caption": "This gallery is also free."
+    },
+    {
+      "img": "Summer-hd-backgrounds-wallpaper.jpg",
+      "caption": "Easy to use."
+    },
+    {
+      "img": "Summer-High-Quality-Resolution-Wallpapers.jpg",
+      "caption": "Highly customizable html markup."
+    },
+    {
+      "img": "summer-high-resolution-wallpapers.jpg",
+      "caption": "Accessible."
+    },
+    {
+      "img": "Summer-Nature-Wallpaper-HD.jpg",
+      "caption": "Fully cross-compatible."
+    },
+    {
+      "img": "Summer-Nights-Desktop-Wallpaper.jpg",
+      "caption": "Highly customizable css markup."
+    },
+    {
+      "img": "Summer-Photo-Amazing-Wallpaper.jpg",
+      "caption": "Lazy loading images."
+    },
+    {
+      "img": "Summer-Photography-Backgrounds-768x480.jpg",
+      "caption": "Defaults to a minimalist html and css markup when custom markup is not declared."
+    },
+    {
+      "img": "Summer-wallpaper-pictures-images-free-768x480.jpg",
+      "caption": "Slideshow."
+    },
+    {
+      "img": "Summer-wallpapers-hd-1080P.jpg",
+      "caption": "Pagination."
+    },
+    {
+      "img": "Summer-wallpapers-high-quality-768x480.jpg",
+      "caption": "Auto-Play."
+    },
+    {
+      "img": "Summer-wallpapers-high-quality-free-download.jpg",
+      "caption": "Auto-Display, etc."
+    }
+  ]
+]
