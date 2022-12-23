@@ -5,8 +5,10 @@
 	--color_1: #2E9AFE; /* blue */
 	--color_2: #F79F81; /* salmon */
 	--color_3: #848484; /* dark gray */
-	--color_4: #E6E6E6; /* light gray */
+	--color_4: #F2F2F2; /* light gray */
 
+--charcoal: #1A1A1A; /* charcoal */
+	
 	--black: #000000; /* was --color_6 */ /* black */
 	--black_alpha: rgba(0,0,0,0.9); /* was --color_6_alpha */
 	
@@ -97,7 +99,7 @@ p {
 
 /* Grid thumbnails */
 .portfolio .grid {
-	background-color: var(--color_4);
+background-color: var(--color_4);
 	border-radius: var(--radius_6);
 
 	max-width: 100%;
@@ -118,8 +120,8 @@ p {
 
 		/* Grid album (.bb-col) */
 		.portfolio .grid .bb-col h3 {
-			margin-left: 10px;
 			margin-bottom: 10px;
+			text-align: center;
 		}
 
 		/* Grid album (.bb-rest) */
@@ -127,7 +129,7 @@ p {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
-			justify-content: flex-start;
+			justify-content: center;
 			align-items: flex-start;
 		}
 
@@ -187,7 +189,7 @@ p {
 
 /* Progress */
 .portfolio .progress {
-	background-color: var(--color_4);
+	background-color: var(--color_2);
 
 	z-index: 1005;
 	position: fixed;
@@ -251,8 +253,9 @@ p {
 	}
 
 		@media (hover: hover), (-ms-high-contrast:none) {
-			.portfolio .title:hover h3 {
+			.portfolio .title h3:hover {
 				color: var(--color_2);
+				cursor: pointer;
 			}
 		}
 
@@ -298,7 +301,7 @@ p {
 		/* Slideshow Menu */
 		.portfolio .menu {
 			transition: var(--transition_05);
-			background-color: var(--white_alpha);
+			background-color: var(--color_4);
 			border-bottom-left-radius: var(--radius_6);
 			border-bottom-right-radius: var(--radius_6);
 
@@ -331,6 +334,8 @@ p {
 				margin: auto 10px;
 			}
 
+
+
 				/* Image Counter display stats/fractions */
 				.portfolio .counter {
 					font-size: 12px;
@@ -338,6 +343,8 @@ p {
 					width: fit-content;
 					text-align: center;
 				}
+
+
 
 				/* Buttons (except for the buttons used in pagination which are styled separately) */
 				.portfolio .appearance_btn,
@@ -482,18 +489,17 @@ p {
 
 		/* Menu Close */
 		.portfolio .menu_close {
-			color: var(--color_3);
+			color: var(--color_1);
 			background-color: var(--white_alpha);
 			border-bottom-left-radius: var(--radius_6);
 			border-bottom-right-radius: var(--radius_6);
 
-			z-index: 1002;
 			position: absolute;
 			left: 0px;
 			right: 0px;
 			top: 84px;
 			font-size: 16px;
-			line-height: 25px;
+			line-height: 27px;
 			text-align: center;
 			height: 26px;
 			width: 60px;
@@ -503,11 +509,11 @@ p {
 		}
 
 			/* Change menu_close display to none if using a device that supports hover, as a close button won't be needed */
-			/*@media (hover: hover), (-ms-high-contrast:none) {
-				.portfolio .menu_close {
-					 display: none; 
+			@media (hover: hover), (-ms-high-contrast:none) {
+				.portfolio .menu_close:hover {
+					 color: var(--color_2);
 				}
-			}*/
+			}
 
 
 
@@ -559,6 +565,7 @@ p {
 
 				position: fixed;
 				width: fit-content;
+				/*top: 80%;*/
 				bottom: 140px;
 				margin: auto;
 				left: 0;
@@ -569,8 +576,7 @@ p {
 			-ms-hyphens: auto;
 			hyphens: auto;
 			line-height: 22px;
-			/*top: 80%;*/
-			max-width: 80%;
+			max-width: 540px;
 			max-height: 60px;
 			padding: 14px 20px;
 			overflow-x: hidden;
@@ -588,7 +594,7 @@ p {
 
 		/* Pagination */
 		.portfolio .pagination {
-			background-color: var(--white_alpha);
+			background-color: var(--color_4);
 			border-radius: var(--radius_6);
 
 			z-index: 1002;
@@ -624,7 +630,7 @@ p {
 
 			/* First, Last, Next, Previous */
 			.portfolio .first_btn, .portfolio .last_btn, .portfolio .next_btn, .portfolio .previous_btn {
-				color: var(--color_3);
+				color: var(--color_1);
 				transition: var(--transition_05);
 
 				text-align: center;
@@ -641,7 +647,7 @@ p {
 				/* Change color on hover if using a device that supports it */
 					@media (hover: hover), (-ms-high-contrast:none) {
 						.portfolio .first_btn:hover, .portfolio .last_btn:hover, .portfolio .next_btn:hover, .portfolio .previous_btn:hover {
-							color: var(--color_1);
+							color: var(--color_2);
 						}
 					}
 
@@ -747,16 +753,26 @@ p {
 --------------------------------- */
 @media only screen and (max-width: 800px) {
 
+
+	/* General
+	--------------------------------- */
 	p {
 		font-size: 32px;
 		line-height: 42px;
 	}
 
+
+
+	/* Portfolio container
+	--------------------------------- */
 	.portfolio h2 {
 		font-size: 18px;
 		margin-bottom: 20px;
 	}
 
+
+
+	/* Grid */
 	.portfolio .grid {
 		padding: 10px;
 	}
@@ -766,20 +782,21 @@ p {
 			margin-top: 5px;
 		}
 
-			/* Grid album (.bb-rest) thb */
+			/* Grid album (.bb-rest) thb thumbnails */
 			.portfolio .grid .bb-rest .thb {
 				width: 48px;
 			}
 
 
 
-	/* progress bar span: text percentage, add a lil padding to the rt and lt side of that text */
+	/* Progress */
 	.portfolio .progress_bar span {
 		display: none;
 	}
 
 
 
+	/* Gallery Title (h2), Album Name (h3) // Can be modified/order-swapped in the markup, but the actual h2 and h3 tags are hard-coded in the class as of now */
 	.portfolio .title {
 		flex-direction: column;
 		align-items: center;
@@ -798,6 +815,7 @@ p {
 			font-size: 28px;
 			margin: 0px;
 			margin-bottom: 0px;
+			text-align: center;
 		}
 
 
@@ -807,13 +825,13 @@ p {
 		}
 
 
-
+	/* Modal Content */
 	.portfolio .modal_content {
 		max-width: 60%;
 	}
 
 
-
+	/* Slideshow Menu */
 	.portfolio .menu {
 		position: relative;
 /*		margin-bottom: 30px;*/
@@ -889,8 +907,7 @@ p {
 		box-shadow: none;
 
 		position: relative;
-		/*top: 80%;*/
-		bottom: 0px;
+		top: 0px;
 		left: 0;
 		right: 0;
 		font-size: 16px;
