@@ -836,8 +836,11 @@ class Gallery {
 			this.containers.fscreen.style.setProperty('--white', '#FFFFFF');
 		 	this.containers.fscreen.style.setProperty('--white_alpha', 'rgba(255,255,255,0.9)');
 		 	this.containers.fscreen.style.setProperty('--black', '#000000');
+		 	this.containers.fscreen.style.setProperty('--color_1', '#2E9AFE');
+		 	this.containers.fscreen.style.setProperty('--color_2', '#F79F81');
 		 	this.containers.fscreen.style.setProperty('--color_3', '#848484');
-		 	this.containers.fscreen.style.setProperty('--color_4', '#E6E6E6');
+		 	this.containers.fscreen.style.setProperty('--color_4', '#F2F2F2');
+		 	this.containers.fscreen.style.setProperty('--charcoal', '#1A1A1A');
 
 		 	this.status.appearance_mode = false; // then reset
 		} else {
@@ -846,8 +849,11 @@ class Gallery {
 		    this.containers.fscreen.style.setProperty('--white', '#000000');
 		    this.containers.fscreen.style.setProperty('--white_alpha', 'rgba(0,0,0,0.9)');
 		    this.containers.fscreen.style.setProperty('--black', '#FFFFFF');
-		    this.containers.fscreen.style.setProperty('--color_3', '#E6E6E6');
-		 	this.containers.fscreen.style.setProperty('--color_4', '#848484');
+		    this.containers.fscreen.style.setProperty('--color_1', '#F79F81');
+		 	this.containers.fscreen.style.setProperty('--color_2', '#2E9AFE');
+		    this.containers.fscreen.style.setProperty('--color_3', '#F2F2F2');
+		 	this.containers.fscreen.style.setProperty('--color_4', '#1A1A1A');
+		 	this.containers.fscreen.style.setProperty('--charcoal', '#F2F2F2');
 
 		    this.status.appearance_mode = true; // then reset
 		}
@@ -957,7 +963,7 @@ class Gallery {
 			/*this.containers.gallery.querySelector(".slideshow").classList.remove("fullscreen");
 			document.body.classList.remove("fullscreen");*/
 
-			// If scroll buttons are enabled, temporarily de-activate their functionality during fullscreen.
+			// If scroll buttons are enabled, but temporarily de-activated...re-activate their functionality on exit fullscreen.
 			if (this.containers.gallery.querySelector(".scroll")) {
 				const obj = this.containers.gallery.querySelector(".scroll");
 			    obj.style.opacity = '100%';
@@ -1226,6 +1232,7 @@ class Gallery {
 		    this.component_array.img[this.status.img_index].style.width = "100%";
 			this.component_array.img[this.status.img_index].style.height = "100%";
 			this.component_array.img[this.status.img_index].style.marginTop = "0px";
+			this.component_array.img[this.status.img_index].style.boxShadow = "var(--shadow)";
 			this.component_array.img[this.status.img_index].setAttribute('src', resolve); // resolve / this.component_array.img[this.status.img_index].getAttribute('data-src')
 
 			//this.component_array.img[this.status.img_index].classList.add('active'); // style.display = "block";
