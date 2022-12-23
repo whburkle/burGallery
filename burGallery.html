@@ -36,7 +36,7 @@
 		toggle_scroll_orientation = () => {
 			if (document.querySelector(".pagination").classList.contains("vertical")) {
 				document.querySelector(".pagination").classList.remove("vertical");
-				document.querySelector(".pagination_orientation_btn").innerHTML = "&#xf58d;";
+				document.querySelector(".pagination_orientation_btn").innerHTML = "&#xf141;";
 				document.querySelector(".pagination_orientation_btn").classList.remove("active");
 				portfolio.containers.scroll.classList.remove("vertical");
 
@@ -52,7 +52,7 @@
 			}
 			else {
 				document.querySelector(".pagination").classList.add("vertical");
-				document.querySelector(".pagination_orientation_btn").innerHTML = "&#xf58e;";
+				document.querySelector(".pagination_orientation_btn").innerHTML = "&#xf142;";
 				document.querySelector(".pagination_orientation_btn").classList.add("active");
 				portfolio.containers.scroll.classList.add("vertical");
 
@@ -67,42 +67,41 @@
 			}
 		}
 
+
+
 		menu_state = () => {
+			if (portfolio.containers.album_navigation.querySelector(".dropdown_content").classList.contains("active")) {
+				portfolio.containers.album_navigation.querySelector(".dropdown_content").classList.remove("active");
+			} 
+
 			if (document.querySelector(".menu").classList.contains("active")) {
 				document.querySelector(".menu").classList.remove("active");
 				document.querySelector(".menu_close").innerHTML = "&#xf107;";
 				portfolio.containers.modal_content.style.marginTop = "40px";
 			}
 			else {
-				document.querySelector(".menu_close").innerHTML = "&#xf106;";
 				document.querySelector(".menu").classList.add("active");
+				document.querySelector(".menu_close").innerHTML = "&#xf106;";
 				portfolio.containers.modal_content.style.marginTop = "80px";
 			}
+		}
 
+		
+
+		window_resize_adjustments = () => {
 			if (portfolio.containers.album_navigation.querySelector(".dropdown_content").classList.contains("active")) {
 				portfolio.containers.album_navigation.querySelector(".dropdown_content").classList.remove("active");
 			} 
+
+			document.querySelector(".menu").classList.add("active");
+			document.querySelector(".menu_close").innerHTML = "&#xf106;";
+			portfolio.containers.modal_content.style.marginTop = "80px";
+			/*portfolio.containers.images.style.pointerEvents = "none";*/
 		}
 
-function reportWindowSize() {
-	if (portfolio.containers.modal_content.style.marginTop === "40px") {
-		/*document.querySelector(".menu").classList.remove("active");
-		document.querySelector(".menu_close").innerHTML = "&#xf107;";
-		portfolio.containers.modal_content.style.marginTop = "40px";
+		window.onresize = window_resize_adjustments;
 
-		if (portfolio.containers.album_navigation.querySelector(".dropdown_content").classList.contains("active")) {
-			portfolio.containers.album_navigation.querySelector(".dropdown_content").classList.remove("active");
-		} 
-	}
-	else {*/
-		document.querySelector(".menu_close").innerHTML = "&#xf106;";
-		document.querySelector(".menu").classList.add("active");
-		portfolio.containers.modal_content.style.marginTop = "80px";
-		portfolio.containers.images.style.pointerEvents = "none";
-	}
-}
-
-window.onresize = reportWindowSize;
+		
 
 		custom_event = () => {
 			menu_state();
@@ -175,13 +174,17 @@ window.onresize = reportWindowSize;
 
 				<!-- Album Title -->
 				<div class="title">Gallery Title - Album Name</div>
-				<div class="album_navigation"><button class="dropdown_btn fas">&#xf0c9;</button></div> <!-- Album navigation --> 
+
+				<!-- Album navigation --> 
+				<div class="album_navigation"><button class="dropdown_btn fas">&#xf0c9;</button></div>
 
 				<!-- Slideshow Main -->
 			    <div class="slideshow">
 
 				    <div class="menu">
-						<div class="options"> <!-- Image options -->
+
+				    	<!-- Menu options -->
+						<div class="options">
 							<button class="pause_btn fas">&#xf04b;</button> <!-- Toggle Play/Pause -->
 							<button class="caption_btn fas">&#xf05a;</button> <!-- Toggle caption -->
 							<button class="appearance_btn fas">&#xf186;</button> <!-- Toggle appearance mode -->
@@ -189,7 +192,7 @@ window.onresize = reportWindowSize;
 							<span class="counter">0/0</span> <!-- Counter -->
 							<button class="fscreen_btn fas">&#xf065;</button> <!-- Toggle full screen -->
 							<button class="download_btn fas">&#xf019;</button> <!-- Download image -->
-							<button class="pagination_orientation_btn fas">&#xf58d;</button> <!-- Pagination orientation -->
+							<button class="pagination_orientation_btn fas">&#xf141;</button> <!-- Pagination orientation -->
 							<!-- <div class="album_navigation"><button class="dropdown_btn fas">&#xf805;</button></div> --> <!-- Album navigation --> 
 							<button class="close_btn fas">&#xf410;</button> <!-- Gallery (and album) close -->
 						</div>
@@ -203,7 +206,8 @@ window.onresize = reportWindowSize;
 			    
 			    </div>
 			
-			    <div class="pagination"> <!-- Gallery pagination first, last, next, previous, scroll -->
+				<!-- Gallery pagination first, last, next, previous, scroll -->
+			    <div class="pagination">
 			    	<button class="first_btn fas">&#xf100;</button>
 			    	<button class="previous_btn fas">&#xf104;</button>
 					<div class="scroll"></div>
@@ -244,7 +248,7 @@ window.onresize = reportWindowSize;
 				// Build index of images/slides for each respective album
 				// "images_wrapper_content" returns just about any value for use in your custom markup, including current image
 				images_wrapper_content: (i, element, album_num, album_title, image_folder, image_file, total_images) => {
-					return `<img class='img' style="width: 20px; height: 20px; margin: auto; margin-top: 50px;" data-src='${ image_folder + image_file }' src='img/spinner.gif'>`;
+					return `<img class='img' style="width: 20px; height: 20px; margin: auto; margin-top: 50px; background-color: transparent; box-shadow: none;" data-src='${ image_folder + image_file }' src='img/spinner.gif'>`;
 				},
 
 				// Include necessary closing tag(s).
@@ -271,7 +275,7 @@ window.onresize = reportWindowSize;
 				// "grid_wrapper_content" returns just about any value for use in your custom markup, including current image
 				grid_wrapper_content: (t, element, album_num, album_title, image_folder, image_file, total_images) => {
 					// return `<button type='button' class='thb i_${ t }'>${ t }</button>`;
-					return `<img class='thb i_${ t }' src='${ image_folder + "/thb/" + image_file }'>`;
+					return `<img class='thb i_${ t }' src='${ image_folder + "thb/" + image_file }'>`;
 				},
 
 				// Include necessary closing tag(s).
@@ -288,7 +292,7 @@ window.onresize = reportWindowSize;
 				// "scroll" returns just about any value for use in your custom markup, including current image
 				scroll: (t, element, album_num, album_title, image_folder, image_file, total_images) => {
 					// return `<button type='button' class='test thb i_${ t }'>${ t }</button>`;
-					return `<img class='thb i_${ t }' src='${ image_folder + "/thb/" + image_file }'>`;
+					return `<img class='thb i_${ t }' src='${ image_folder + "thb/" + image_file }'>`;
 				},
 
 
