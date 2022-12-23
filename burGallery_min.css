@@ -1,0 +1,1002 @@
+/* Globals
+--------------------------------- */
+:root {
+	/* Colors */
+	--color_1: #2E9AFE; /* blue */
+	--color_2: #F79F81; /* salmon */
+	--color_3: #848484; /* dark gray */
+	--color_4: #F2F2F2; /* light gray */
+
+--charcoal: #1A1A1A; /* charcoal */
+	
+	--black: #000000; /* was --color_6 */ /* black */
+	--black_alpha: rgba(0,0,0,0.9); /* was --color_6_alpha */
+	
+	--white: #FFFFFF; /* was --base_color */
+	--white_alpha: rgba(255,255,255,0.9); /* was --base_color_alpha */
+
+	/* Fonts */
+	--h1: 42px;
+	--h2: 28px;
+	--p: 14px;
+
+	--family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif; /* was --base_font */
+
+	/* Borders */
+	--radius_6: 6px; /* was --border_radius */
+
+	/* Effects */
+	--animation_10: 1.0s; /* was --transition */
+	--shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08), 0 6px 20px 0 rgba(0, 0, 0, 0.06);
+	--transition_05: all ease-in-out .5s; /* was --transition */
+}
+
+
+
+/* General
+--------------------------------- */
+html {
+	background-color: var(--white);
+
+	width: 100%;
+	height: auto; 
+	-ms-scroll-chaining: none; 
+	overscroll-behavior: contain;
+	white-space: nowrap;
+}
+
+
+
+body {
+	font-size: var(--p);
+	font-family: var(--family);
+	color: var(--color_3);
+
+	line-height: 24px; 
+	max-width: 80%;
+	height: auto; 
+	overflow: auto;
+	margin: auto;
+	margin-top: 30px;
+	padding-bottom: 100px;
+	white-space: normal;
+}
+
+	/*body.fullscreen {
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+	}*/
+
+
+
+h1 {
+	font-size: var(--h1);
+	color: var(--color_1);
+
+	margin-bottom: 0px;
+}
+
+p {
+	margin-bottom: 40px;
+}
+
+
+
+/* Portfolio container
+--------------------------------- */
+.portfolio {
+	position: relative;
+}
+
+
+
+/* Portfolio h2 */
+.portfolio h2 {
+	font-size: var(--h2);
+}
+
+
+
+/* Grid thumbnails */
+.portfolio .grid {
+background-color: var(--color_4);
+	border-radius: var(--radius_6);
+
+	max-width: 100%;
+	margin: auto; /* X px, %, etc from the top and centered */
+	padding: 30px;
+	padding-top: 20px;
+}
+
+	/* Preload Thumbnail alt state image, or just use a css style and/or sprite */
+	/*.portfolio .grid_thb_hvr_preload_img {
+
+	}*/
+
+	/* Grid album (.bb-row) */
+	.portfolio .grid .bb-row {
+		margin-bottom: 60px;
+	}
+
+		/* Grid album (.bb-col) */
+		.portfolio .grid .bb-col h3 {
+			margin-bottom: 10px;
+			text-align: center;
+		}
+
+		/* Grid album (.bb-rest) */
+		.portfolio .grid .bb-rest {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: flex-start;
+		}
+
+			/* Grid album (.bb-rest) thb */
+			.portfolio .grid .bb-rest .thb {
+				background-color: var(--color_1);
+				border-radius: var(--radius_6);
+				transition: var(--transition_05);
+				color: var(--white);
+
+				border: none;
+				padding: 2px;
+				width: 120px;
+				height: auto;
+				margin: 10px;
+				cursor: pointer;
+			}
+
+				/* Grid thb, change background color of active thb */
+				.portfolio .grid .bb-rest .thb.active {
+					background-color: var(--color_3);
+
+					cursor: default;
+				}
+
+				/* Grid thb, change background color on hover if using a device that supports it */
+				@media (hover: hover), (-ms-high-contrast:none) {
+					.portfolio .grid .bb-rest .thb:hover {
+						background-color: var(--color_2);
+					}
+				}
+
+
+
+/* Modal */
+.portfolio .modal {
+	background-color: var(--white_alpha);
+	-webkit-animation: fade_in_modal var(--animation_10);
+	animation: fade_in_modal var(--animation_10);
+
+	z-index: 1001;
+	display: none; /* Hidden by default */ 
+	position: fixed; /* Stay in place */  
+	left: 0px; /* Position left */ 
+	top: 0px; /* Position left */
+	width: 100%; /* Full width */ 
+	height: 100%; /* Full height */
+	overflow-x: hidden;
+	overflow-y: auto;
+	-ms-scroll-chaining: none;
+	overscroll-behavior: contain;
+	/*-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);*/
+}
+	/* Fade in modal */
+	@-webkit-keyframes fade_in_modal { from { opacity: 0 } to { opacity: 1 } }
+	@keyframes fade_in_modal { from { opacity: 0 } to { opacity: 1 } }
+
+
+
+/* Progress */
+.portfolio .progress {
+	background-color: var(--color_2);
+
+	z-index: 1005;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 3px;
+}
+
+	/* progress bar */
+	.portfolio .progress_bar {
+		border-right: 4px solid var(--black);
+		background-color: var(--color_1);
+		transition: var(--transition_05);
+
+		text-align: right;
+		width: 1%;
+		height: 4px;
+	}
+
+	/* progress bar span: text percentage, add a lil padding to the rt and lt side of that text */
+	.portfolio .progress_bar span {
+		color: var(--color_1);
+		background-color: transparent;
+		border-radius: var(--radius_6);
+
+		font-size: 12px;
+		line-height: 28px;
+		white-space: nowrap;
+		padding: 4px 12px;
+		box-shadow: none;
+	}
+
+
+
+/* Modal Content */
+.portfolio .modal_content {
+	transition: var(--transition_05); 
+
+	position: relative;
+	margin: auto; /* X px, %, etc from the top and centered */
+	margin-top: 80px; 
+	width: 600px; /* 100% */
+	max-width: 90%;		
+}
+
+	.portfolio .modal_content.fullscreen {
+		max-width: 100%;
+	}
+
+
+
+	/* Gallery Title (h2), Album Name (h3) // Can be modified/order-swapped in the markup, but the actual h2 and h3 tags are hard-coded in the class as of now */
+	.portfolio .title {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: space-between;
+		margin-left: 50px;
+		margin-right: 50px;
+	}
+
+		@media (hover: hover), (-ms-high-contrast:none) {
+			.portfolio .title h3:hover {
+				color: var(--color_2);
+				cursor: pointer;
+			}
+		}
+
+		.portfolio .title h2 {
+			text-transform: capitalize;
+		}
+
+		.portfolio .title h3 {
+			color: var(--color_1);
+			line-height: 30px;
+		}
+
+
+
+	/* Portfolio .slideshow */
+	.portfolio .slideshow {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-end;
+		position: relative;
+		/* overflow: hidden;*/
+		margin: 0px auto; /* X px, %, etc from the top and centered */
+		margin-bottom: 120px;
+		width: -webkit-fit-content;
+		width: -moz-fit-content;
+		width: fit-content; /* fit-content */
+		/* max-width: 1000px;*/
+	}
+
+		/* Modify menu on slideshow hover if using a device that supports it */
+		/*@media (hover: hover), (-ms-high-contrast:none) {
+			.portfolio .modal_content:hover .menu {
+				top: -1px;
+				opacity: 100%;
+			}
+		}*/
+
+		/*.portfolio .slideshow.fullscreen {
+			max-width: 100%;
+		}*/
+
+		
+
+		/* Slideshow Menu */
+		.portfolio .menu {
+			transition: var(--transition_05);
+			background-color: var(--color_4);
+			border-bottom-left-radius: var(--radius_6);
+			border-bottom-right-radius: var(--radius_6);
+
+			z-index: 1003;
+			display: flex;
+			flex-direction: column;
+			position: fixed;
+			top: -84px;
+			left: 0px;
+			width: 100%; /* width: 100%; */
+			height: 80px;
+			/*opacity: 0%;*/
+			box-shadow: var(--shadow);
+		}
+
+			.portfolio .menu.active {
+				top: -1px;
+				/*opacity: 100%;*/	
+			}
+
+
+
+			/* Options */
+			.portfolio .options {
+				display: flex;
+				flex-wrap: nowrap;
+				flex-direction: row;
+				justify-content: space-evenly;
+				align-items: center;
+				margin: auto 10px;
+			}
+
+
+
+				/* Image Counter display stats/fractions */
+				.portfolio .counter {
+					font-size: 12px;
+					font-weight: bold;
+					width: -webkit-fit-content;
+					width: -moz-fit-content;
+					width: fit-content;
+					text-align: center;
+				}
+
+
+
+				/* Buttons (except for the buttons used in pagination which are styled separately) */
+				.portfolio .appearance_btn,
+				.portfolio .caption_btn,
+				.portfolio .close_btn,
+				.portfolio .download_btn,
+				.portfolio .fscreen_btn,
+				.portfolio .fwindow_btn, 
+				.portfolio .pause_btn,
+				.portfolio .dropdown_btn,
+			   .portfolio .pagination_orientation_btn {
+					color: var(--color_1);
+					transition: var(--transition_05);
+
+					font-size: 22px;
+					background-color: transparent;
+					border: none;
+					cursor: pointer;
+				}
+
+					/* Change color for active btn(s) */
+					.portfolio .appearance_btn.active,
+					.portfolio .caption_btn.active,
+					.portfolio .download_btn.active,
+					.portfolio .fscreen_btn.active,
+					.portfolio .fwindow_btn.active,
+					.portfolio .pause_btn.active,
+				   .portfolio .pagination_orientation_btn.active {
+						color: var(--color_2);
+					}
+
+					/* Change color on hover if using a device that supports it */
+					@media (hover: hover), (-ms-high-contrast:none) {
+						.portfolio .appearance_btn:hover,
+						.portfolio .caption_btn:hover,
+						.portfolio .close_btn:hover,
+						.portfolio .download_btn:hover,
+						.portfolio .fscreen_btn:hover,
+						.portfolio .fwindow_btn:hover,
+						.portfolio .pause_btn:hover,
+						.portfolio .album_navigation:hover .dropdown_btn,
+					   .portfolio .pagination_orientation_btn:hover {
+							color: var(--color_2);
+						}
+					}
+
+
+
+				/* Album Navigation */
+				/*.portfolio .album_navigation {
+					position: relative;
+					display: inline-block;
+				}*/
+				
+				.portfolio .album_navigation {
+					/*display: none;*/
+					position: absolute;
+					right: 0px;
+					top: 22px;
+				}
+
+					/* Show dropdown menu content on hover if using a device that supports it */ /* Moved to js using add/remove ".active" class, and it now closes upon option selection */
+					/*@media (hover: hover), (-ms-high-contrast:none) {
+						.portfolio .album_navigation:hover .dropdown_content {
+							display: block;
+						}
+					}*/
+
+					.portfolio .dropdown_btn {
+						display: none;
+					}
+
+					.portfolio .dropdown_content {
+						background-color: var(--color_4);
+						border-radius: var(--radius_6);
+						-webkit-animation: fade_in_dropdown_content var(--animation_10);
+						animation: fade_in_dropdown_content var(--animation_10);
+
+						z-index: 1004;
+						display: none;
+						position: absolute;
+						top: 16px;
+						right: 4px;
+						min-width: 160px;
+						border-top-right-radius: 0px;
+						box-shadow: var(--shadow);
+					}
+						/* Fade in dropdown content */
+						@-webkit-keyframes fade_in_dropdown_content { from { opacity: 0 } to { opacity: 1 } }
+						@keyframes fade_in_dropdown_content { from { opacity: 0 } to { opacity: 1 } }
+
+						/* Set dropdown menu content to active */
+						.portfolio .dropdown_content.active {
+							display: block;
+						}
+
+						/* Dropdown content button */
+						.portfolio .dropdown_content button {
+							color: var(--color_1);
+							transition: var(--transition_05);
+
+							display: block;
+							font-size: 14px;
+							text-align: left;
+							text-decoration: none;
+							border: none;
+							background-color: transparent;
+							cursor: pointer;
+							margin: 0px;
+							padding: 12px 16px;
+							width: 100%;
+							pointer-events: auto;
+						}
+
+							/* Set dropdown content button to active */
+							.portfolio .dropdown_content button.active {
+								color: var(--color_2);
+								pointer-events: none;
+							}
+
+							/* Set dropdown content button style on hover if using a device that supports it */
+							@media (hover: hover), (-ms-high-contrast:none) {
+								.portfolio .dropdown_content button:hover { 
+									color: var(--white);
+									background-color: var(--color_2);
+								}
+
+								.portfolio .dropdown_content button:hover:first-of-type {
+									border-radius: var(--radius_6);
+
+									border-top-right-radius: 0px;
+									border-bottom-left-radius: 0px;
+									border-bottom-right-radius: 0px;
+								}
+
+								.portfolio .dropdown_content button:hover:last-of-type {
+									border-radius: var(--radius_6);
+
+									border-top-left-radius: 0px;
+									border-top-right-radius: 0px;
+								}
+							}
+
+
+		/* Menu Close */
+		.portfolio .menu_close {
+			color: var(--color_1);
+			background-color: var(--white_alpha);
+			border-bottom-left-radius: var(--radius_6);
+			border-bottom-right-radius: var(--radius_6);
+
+			position: absolute;
+			left: 0px;
+			right: 0px;
+			top: 84px;
+			font-size: 16px;
+			line-height: 27px;
+			text-align: center;
+			height: 26px;
+			width: 60px;
+			margin: auto; /* X px, %, etc from the top and centered */
+			/*box-shadow: var(--shadow);*/
+			cursor: pointer;
+		}
+
+			/* Change menu_close display to none if using a device that supports hover, as a close button won't be needed */
+			@media (hover: hover), (-ms-high-contrast:none) {
+				.portfolio .menu_close:hover {
+					 color: var(--color_2);
+				}
+			}
+
+
+
+		/* Portfolio images container */
+		.portfolio .images {
+			border-radius: var(--radius_6);
+
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+			/* Error loading image */
+			.portfolio .error {
+				/* transition: var(--transition_05); */
+
+				margin: 75px auto; /* X px, %, etc from the top and centered */
+				text-align: center;	
+			}
+
+			/* Portfolio .images img tag */
+			.portfolio .images img {
+				border-radius: var(--radius_6);
+				-webkit-animation: fade_in_img var(--animation_10);
+				animation: fade_in_img var(--animation_10);
+
+				display: none;
+				width: 100%;
+				height: 100%;
+				box-shadow: var(--shadow);
+			}
+				@-webkit-keyframes fade_in_img { from { opacity: 0 } to { opacity: 1 } }
+				@keyframes fade_in_img { from { opacity: 0 } to { opacity: 1 } }
+
+				/* Portfolio .images img tag */
+				.portfolio .images img.active {
+					display: block;
+				}
+
+		
+
+		/* Caption container */
+		.portfolio .caption {
+			color: var(--black);
+			background-color: var(--white_alpha);
+			border-radius: var(--radius_6);
+			transition: var(--transition_05);
+
+			z-index: 1002;
+			/* position: absolute;*/
+
+				position: fixed;
+				width: -webkit-fit-content;
+				width: -moz-fit-content;
+				width: fit-content;
+				/*top: 80%;*/
+				bottom: 140px;
+				margin: auto;
+				left: 0;
+				right: 0;
+
+			text-align: left;
+			-webkit-hyphens: auto;
+			-ms-hyphens: auto;
+			hyphens: auto;
+			line-height: 22px;
+			max-width: 540px;
+			max-height: 60px;
+			padding: 14px 20px;
+			overflow-x: hidden;
+			overflow-y: auto;
+			-ms-scroll-chaining: none;
+			overscroll-behavior: contain;
+			opacity: 0%;
+			box-shadow: var(--shadow);
+		}
+
+			.portfolio .caption.active {
+				opacity: 90%;
+			}
+
+
+
+		/* Pagination */
+		.portfolio .pagination {
+			background-color: var(--color_4);
+			border-radius: var(--radius_6);
+
+			z-index: 1002;
+			position: fixed;
+			bottom: 0px;
+			left: 0px;
+			display: flex;
+			flex-wrap: nowrap;
+			flex-direction: row;
+  			justify-content: center;
+  			align-items: center;
+			margin: 0px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			width: 100%;
+			height: auto;
+			box-shadow: none;
+/*			border: 1px solid red;*/
+		}
+
+			.portfolio .pagination.vertical {
+				top: 20%;
+				flex-direction: column;
+	  			justify-content: flex-start;
+				width: 44px;
+				height: 50%;
+				padding-left: 20px;
+				padding-right: 20px;
+				box-shadow: var(--shadow);
+			}
+
+
+
+			/* First, Last, Next, Previous */
+			.portfolio .first_btn, .portfolio .last_btn, .portfolio .next_btn, .portfolio .previous_btn {
+				color: var(--color_1);
+				transition: var(--transition_05);
+
+				text-align: center;
+				border: 0;
+				background-color: transparent;
+				width: 40px;
+				height: 40px;
+				margin-left: 5px;
+				margin-right: 5px;
+				padding: 0px;
+				cursor: default;
+			}
+
+				/* Change color on hover if using a device that supports it */
+					@media (hover: hover), (-ms-high-contrast:none) {
+						.portfolio .first_btn:hover, .portfolio .last_btn:hover, .portfolio .next_btn:hover, .portfolio .previous_btn:hover {
+							color: var(--color_2);
+						}
+					}
+
+					/* Set a coupla more style options to the first, last, next, and previous buttons */
+					.portfolio .first_btn, .portfolio .last_btn {
+						font-size: 16px;
+						line-height: 18px;
+					}
+
+					.portfolio .next_btn, .portfolio .previous_btn {
+						font-size: 20px;
+						line-height: 18px;
+					}
+
+
+
+			/* Scroll thumbs container */
+			.portfolio .scroll {
+				/*width: 100%;*/
+				max-width: 60%;
+				overflow-x: auto;
+				overflow-y: hidden;
+				-ms-scroll-chaining: none;
+				overscroll-behavior: contain;
+				white-space: nowrap;
+				
+				margin-left: 20px;
+				margin-right: 20px;
+				border-left: 1px dotted var(--color_3);
+				border-right: 1px dotted var(--color_3);
+			}
+
+				.portfolio .scroll.vertical {
+					max-width: 64px;
+					height: 100%;
+					overflow-x: hidden;
+					overflow-y: auto;
+					
+					margin-left: 0px;
+					margin-right: 0px;
+					margin-top: 20px;
+					margin-bottom: 20px;
+					border: 0px;
+					border-top: 1px dotted var(--color_3);
+					border-bottom: 1px dotted var(--color_3);
+				}
+
+				/* Hide scrollbar for Chrome, Safari and Opera */
+				.portfolio .scroll::-webkit-scrollbar {
+					display: none;
+				}
+
+				/* Hide scrollbar for IE, Edge and Firefox */
+				.portfolio .scroll {
+					-ms-overflow-style: none;  /* IE and Edge */
+					scrollbar-width: none;  /* Firefox */
+				}
+
+				/* Scroll thumbs thb */
+				.portfolio .scroll .thb {
+					color: var(--white);
+					border-radius: var(--radius_6);
+					background-color: var(--color_1);
+					transition: var(--transition_05);
+
+					/* display: inline-block; */
+					font-size: 14px;
+					text-align: center;
+					vertical-align: middle;
+					border: 0;
+					width: 60px;
+					max-height: auto;
+					margin-left: 15px;
+					margin-right: 15px;
+					padding: 2px;
+					cursor: pointer;
+				}
+
+					.portfolio .scroll .thb.vertical {
+						display: block; 
+						margin-left: 0px;
+						margin-right: 0px;
+						margin-top: 15px;
+						margin-bottom: 15px;
+					}
+
+					/* Set current scroll thb button to active */
+					.portfolio .scroll .thb.active {
+						background-color: var(--color_3);
+
+						cursor: default;
+					}
+
+					/* Change background color on hover if using a device that supports it */
+					@media (hover: hover), (-ms-high-contrast:none) {
+						.portfolio .scroll .thb:hover {
+							background-color: var(--color_2);
+						}
+					}
+
+
+
+/* @media mods
+--------------------------------- */
+@media only screen and (max-width: 800px) {
+
+
+	/* General
+	--------------------------------- */
+	p {
+		font-size: 32px;
+		line-height: 42px;
+	}
+
+
+
+	/* Portfolio container
+	--------------------------------- */
+	.portfolio h2 {
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+
+
+
+	/* Grid */
+	.portfolio .grid {
+		padding: 10px;
+	}
+
+		/* Grid album (.bb-col) */
+		.portfolio .grid .bb-col h3 {
+			margin-top: 5px;
+		}
+
+			/* Grid album (.bb-rest) thb thumbnails */
+			.portfolio .grid .bb-rest .thb {
+				width: 48px;
+			}
+
+
+
+	/* Progress */
+	.portfolio .progress_bar span {
+		display: none;
+	}
+
+
+
+	/* Gallery Title (h2), Album Name (h3) // Can be modified/order-swapped in the markup, but the actual h2 and h3 tags are hard-coded in the class as of now */
+	.portfolio .title {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 0px;
+		margin-top: -40px;
+		margin-bottom: 30px;
+	}
+
+		.portfolio .title h2 {
+			font-size: 24px;
+			margin-bottom: 30px;
+		}
+
+		.portfolio .title h3 {
+			font-size: 28px;
+			margin: 0px;
+			margin-bottom: 0px;
+			text-align: center;
+		}
+
+
+
+		.portfolio .album_navigation {
+			top: 16px;
+		}
+
+
+	/* Modal Content */
+	.portfolio .modal_content {
+		max-width: 60%;
+	}
+
+
+	/* Slideshow Menu */
+	.portfolio .menu {
+		position: relative;
+/*		margin-bottom: 30px;*/
+		opacity: 100%;
+		background-color: transparent;
+		box-shadow: none;
+	}
+
+
+
+	/* Buttons (except for the buttons used in pagination which are styled separately) */
+	.portfolio .appearance_btn,
+	.portfolio .caption_btn,
+	.portfolio .close_btn,
+	.portfolio .download_btn,
+	.portfolio .fscreen_btn,
+	.portfolio .fwindow_btn, 
+	.portfolio .pause_btn,
+	.portfolio .dropdown_btn {
+		font-size: 20px;
+		padding: 4px;
+	}
+
+	.portfolio .counter {
+		position: absolute;
+		top: 0px;
+		left:0px;
+		right:0px;
+		font-size: 14px;
+		width: 60px;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		line-height: 0px;
+	}
+
+
+	
+	.portfolio .fscreen_btn {
+		display: none;
+	}
+
+	.portfolio .fwindow_btn {
+		display: none;
+	}
+
+	.portfolio .pagination_orientation_btn {
+		display: none;
+	}
+
+
+
+	.portfolio .menu_close {
+		display: none;
+	}
+
+
+	
+	/* Error loading image */
+	.portfolio .error {
+		/* transition: var(--transition_05); */
+
+		margin: 40px auto; /* X px, %, etc from the top and centered */
+		font-size: 14px;
+	}
+
+
+
+	/* Caption container */
+	.portfolio .caption {
+		transition: var(--transition_05);
+		background-color: transparent;
+		box-shadow: none;
+
+		position: relative;
+		top: 0px;
+		left: 0;
+		right: 0;
+		font-size: 16px;
+		line-height: 30px;
+		height: -webkit-fit-content;
+		height: -moz-fit-content;
+		height: fit-content;
+		max-width: 100%;
+		max-height: 100%;
+		margin: auto;
+		margin-top: 10px;
+		padding: 14px 10px;
+		margin-left: 0px;
+		margin-right: 0px;
+		/* border: none;*/
+	}
+
+
+
+	/* Pagination */
+	.portfolio .pagination {
+		/*justify-content: space-between;*/
+	}
+
+		.portfolio .pagination.vertical {
+			top: auto;
+			bottom: 0px;
+			flex-direction: row;
+  			justify-content: space-evenly;
+			width: 100%;
+			height: auto;
+			padding: 0px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			box-shadow: none;
+		}
+
+
+
+	.portfolio .previous_btn {
+		margin-right: 20px;
+	}
+
+	.portfolio .next_btn {
+		margin-left: 20px;
+	}
+
+
+
+	.portfolio .scroll {
+		display: none;
+	}
+
+		/* Scroll thumbs container */
+		/*.portfolio .scroll.vertical {
+			max-width: 60%;
+			overflow-x: auto;
+			overflow-y: hidden;
+			
+			margin-left: 20px;
+			margin-right: 20px;
+			border: 0px;
+		}*/
+
+
+
+		/* Scroll thumbs thb */
+		/*.portfolio .scroll .thb.vertical {
+			/display: block;/ 
+			margin-left: 15px;
+			margin-right: 15px;
+			/margin-top: 15px;
+			margin-bottom: 15px;/
+		}*/
+
+}
