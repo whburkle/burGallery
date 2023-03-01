@@ -7,4 +7,4 @@ Replace with your own images. Use included default html and css or create your o
 Open to feedback, recommendations, mods, pull requests, usage.
 
 
-http://williamburkle.com/_dev/dl/burGallery/burGallery.html
+http://williamburkle.com/dl/burGallery/burGallery.html
